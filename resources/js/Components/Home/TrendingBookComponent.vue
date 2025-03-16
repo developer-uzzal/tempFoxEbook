@@ -4,7 +4,7 @@
 
 <template>
 
-<br>
+    <br>
     <div class="container my-4">
 
         <div class="">
@@ -13,80 +13,81 @@
 
             <div class="row my-5">
 
-                <div class="col-md-2 col-6">
-                    <div class="card border-1 border-primary">
-                        <div class="card-body book-img ">
-                            <img class="card-img-top rounded " src="/public/Home/book2.jpg" alt="Card image cap">
-                            <h5 class="mt-2 mb-0 text-center"> Shar Arbaeen</h5>
+                <div class="col-md-2 col-sm-4 col-6">
+                    <div class="card border-primary shadow-sm">
+                        <div class="card-body text-center">
+                            <img class="book-image rounded" src="/public/Home/book2.jpg" alt="Book Cover">
+                            <h6 class="mt-2 text-truncate">Shar Arbaeen</h6>
                         </div>
                         <div class="card-footer text-center">
-                            <button href="#" class="btn btn-primary">View</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-2 col-6 ">
-                    <div class="card border-1 border-primary">
-                        <div class="card-body book-img ">
-                            <img class="card-img-top rounded " src="/public/Home/book2.jpg" alt="Card image cap">
-                            <h5 class="mt-2 mb-0 text-center"> Shar Arbaeen</h5>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button href="#" class="btn btn-primary">View</button>
+                            <a href="#" class="btn btn-sm btn-primary">View</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-2 col-6">
-                    <div class="card border-1 border-primary">
-                        <div class="card-body book-img ">
-                            <img class="card-img-top rounded " src="/public/Home/book2.jpg" alt="Card image cap">
-                            <h5 class="mt-2 mb-0 text-center"> Shar Arbaeen</h5>
+                    <div class="card border-primary shadow-sm">
+                        <div class="card-body text-center">
+                            <img class="book-image rounded" src="/public/Home/book2.jpg" alt="Book Cover">
+                            <h6 class="mt-2 text-truncate">Shar Arbaeen</h6>
                         </div>
                         <div class="card-footer text-center">
-                            <button href="#" class="btn btn-primary">View</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-2 col-6 ">
-                    <div class="card border-1 border-primary">
-                        <div class="card-body book-img ">
-                            <img class="card-img-top rounded " src="/public/Home/book2.jpg" alt="Card image cap">
-                            <h5 class="mt-2 mb-0 text-center"> Shar Arbaeen</h5>
-                        </div>
-                        <div class="card-footer text-center">
-                            <button href="#" class="btn btn-primary">View</button>
+                            <a href="#" class="btn btn-sm btn-primary">View</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-2 col-6">
-                    <div class="card border-1 border-primary">
-                        <div class="card-body book-img ">
-                            <img class="card-img-top rounded " src="/public/Home/book2.jpg" alt="Card image cap">
-                            <h5 class="mt-2 mb-0 text-center"> Shar Arbaeen</h5>
+                    <div class="card border-primary shadow-sm">
+                        <div class="card-body text-center">
+                            <img class="book-image rounded" src="/public/Home/book2.jpg" alt="Book Cover">
+                            <h6 class="mt-2 text-truncate">Shar Arbaeen</h6>
                         </div>
                         <div class="card-footer text-center">
-                            <button href="#" class="btn btn-primary">View</button>
+                            <a href="#" class="btn btn-sm btn-primary">View</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-2 col-6">
-                    <div class="card border-1 border-primary">
-                        <div class="card-body book-img ">
-                            <img class="card-img-top rounded " src="/public/Home/book2.jpg" alt="Card image cap">
-                            <h5 class="mt-2 mb-0 text-center"> Shar Arbaeen</h5>
+                    <div class="card border-primary shadow-sm">
+                        <div class="card-body text-center">
+                            <img class="book-image rounded" src="/public/Home/book2.jpg" alt="Book Cover">
+                            <h6 class="mt-2 text-truncate">Shar Arbaeen</h6>
                         </div>
                         <div class="card-footer text-center">
-                            <button href="#" class="btn btn-primary">View</button>
+                            <a href="#" class="btn btn-sm btn-primary">View</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-6">
+                    <div class="card border-primary shadow-sm">
+                        <div class="card-body text-center">
+                            <img class="book-image rounded" src="/public/Home/book2.jpg" alt="Book Cover">
+                            <h6 class="mt-2 text-truncate">Shar Arbaeen</h6>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="#" class="btn btn-sm btn-primary">View</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-6">
+                    <div class="card border-primary shadow-sm">
+                        <div class="card-body text-center">
+                            <img class="book-image rounded" src="/public/Home/book2.jpg" alt="Book Cover">
+                            <h6 class="mt-2 text-truncate">Shar Arbaeen</h6>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="#" class="btn btn-sm btn-primary">View</a>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <button type="button" class="btn btn-primary mt-3 d-block mx-auto">View All <i class="fa-solid fa-arrow-right"></i></button>
+                    <button type="button" class="btn btn-primary mt-3 d-block mx-auto">View All <i
+                            class="fa-solid fa-arrow-right"></i></button>
                 </div>
 
             </div>
@@ -96,21 +97,21 @@
 </template>
 
 <style scoped>
-.book-img{
-    width:100%;
-    height: auto;
 
+/* Standardized book image size */
+.book-image {
+    width: 120px;
+    /* Same width for all */
+    height: 160px;
+    /* Same height for all */
+    object-fit: cover;
+    /* Ensures images are cropped properly */
 }
 
-.book-img img{
-    width: 100%; 
-}
-
-@media (max-width: 600px) {
-
-.book-img img{
-  width: 100%; 
-  
-}
+/* Ensure long titles do not break layout */
+.text-truncate {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 </style>

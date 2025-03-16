@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\AuthorsController;
+use App\Http\Controllers\Frontend\BookController as FrontendBookController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\DonateController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -30,6 +31,8 @@ Route::get('/trending',[TrandingController::class, 'index'])->name('trending');
 Route::get('/language',[LanguagesController::class, 'index'])->name('languages');
 Route::get('/contact',[ContactController::class, 'index'])->name('contact');
 Route::get('/donate',[DonateController::class, 'index'])->name('donate');
+
+Route::get('/book/{slug}',[FrontendBookController::class,'SingleBook'])->name('SingleBook');
 
 
 Route::get('/admin/login', [UserController::class, 'login'])->name('admin.login');

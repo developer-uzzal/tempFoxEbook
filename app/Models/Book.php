@@ -15,6 +15,7 @@ class Book extends Model
         'status',
         'publish_year',
         'pageNumber',
+        'size',
         'publication_id',
         'category_id',
         'sub_category_id',
@@ -30,4 +31,21 @@ class Book extends Model
     function category(){
         return $this->belongsTo(Category::class);
     }
+
+    function bookAuth(){
+        return $this->belongsTo(BookAuth::class);
+    }
+
+    function bookLanguage(){
+        return $this->belongsTo(BookLanguage::class);
+    }
+
+    function publication(){
+        return $this->belongsTo(publication::class);
+    }
+
+    function country(){
+        return $this->belongsTo(Country::class);
+    }
+   
 }

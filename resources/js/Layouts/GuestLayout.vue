@@ -10,7 +10,7 @@ const page = usePage();
 <template>
     <Head>
     <title>{{ page.props.menuFooter.title }}</title>
-    <link rel="icon" type="image/x-icon" :href="page.props.menuFooter.fav_icon">
+    <link rel="icon" type="image/x-icon" :href="`${'/' + page.props.menuFooter.fav_icon}`">
     </Head>
 
     <NavComponent></NavComponent>

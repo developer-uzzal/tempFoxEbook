@@ -10,4 +10,7 @@ class Country extends Model
         'name',
         'slug',
     ];
+    public function book(){
+        return $this->hasMany(Book::class);
+    }
 }

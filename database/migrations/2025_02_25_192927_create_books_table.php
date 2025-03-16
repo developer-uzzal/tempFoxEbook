@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('price')->nullable();
             $table->string('pageNumber');
+            $table->string('size');
 
             $table->boolean('is_active')->default(0);
 

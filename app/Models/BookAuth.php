@@ -12,4 +12,9 @@ class BookAuth extends Model
         'description',
 
     ];
+
+    public function book(){
+        return $this->hasMany(Book::class);
+    }
+
 }

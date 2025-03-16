@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2025 at 02:00 PM
+-- Generation Time: Mar 16, 2025 at 12:15 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -62,6 +62,7 @@ CREATE TABLE `books` (
   `image` varchar(255) NOT NULL,
   `price` varchar(255) DEFAULT NULL,
   `pageNumber` varchar(255) NOT NULL,
+  `size` varchar(20) NOT NULL,
   `is_active` tinyint(1) NOT NULL DEFAULT 0,
   `is_premium` tinyint(1) NOT NULL DEFAULT 0,
   `is_trending` tinyint(1) NOT NULL DEFAULT 0,
@@ -78,9 +79,28 @@ CREATE TABLE `books` (
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`id`, `title`, `slug`, `publish_year`, `isbn`, `description`, `image`, `price`, `pageNumber`, `is_active`, `is_premium`, `is_trending`, `category_id`, `book_language_id`, `book_auth_id`, `publication_id`, `country_id`, `created_at`, `updated_at`) VALUES
-(2, 'Eveniet sed cupidit', 'eveniet-sed-cupidit', '1975', '956', 'Aliquid doloribus ea', '/storage/books/eveniet-sed-cupidit-1741425228.jpg', NULL, '993', 1, 1, 0, 5, 3, 2, 2, 1, '2025-03-08 03:13:48', '2025-03-08 03:13:48'),
-(3, 'Amet officia tempor', 'amet-officia-tempor', '2001', '604', 'Et commodo provident', '/storage/books/amet-officia-tempor-1741426097.jpg', NULL, '752', 1, 1, 1, 4, 1, 4, 1, 2, '2025-03-08 03:28:17', '2025-03-08 03:28:17');
+INSERT INTO `books` (`id`, `title`, `slug`, `publish_year`, `isbn`, `description`, `image`, `price`, `pageNumber`, `size`, `is_active`, `is_premium`, `is_trending`, `category_id`, `book_language_id`, `book_auth_id`, `publication_id`, `country_id`, `created_at`, `updated_at`) VALUES
+(2, 'Eveniet sed cupidit', 'eveniet-sed-cupidit', '1975', '956', '“ Be like the sun for grace and mercy. Be like the night to cover others\' faults. Be like running water for generosity. Be like death for rage and anger. Be like the Earth for modesty. Appear as you are. Be as you appear. ” ― Rumi', '/storage/books/eveniet-sed-cupidit-1741425228.jpg', NULL, '993', '', 1, 1, 0, 13, 3, 2, 2, 1, '2025-03-08 03:13:48', '2025-03-16 07:48:28'),
+(3, 'Amet officia tempor', 'amet-officia-tempor', '2001', '604', 'Et commodo provident', '/storage/books/amet-officia-tempor-1741426097.jpg', NULL, '752', '', 1, 1, 1, 4, 1, 4, 1, 2, '2025-03-08 03:28:17', '2025-03-08 03:28:17'),
+(4, 'Itaque aut sed offic', 'itaque-aut-sed-offic', '2004', '12', 'Voluptatum accusanti', '/storage/books/itaque-aut-sed-offic-1742110879.jpg', NULL, '579', '', 0, 1, 1, 13, 5, 5, 3, 2, '2025-03-16 01:41:20', '2025-03-16 01:41:20'),
+(5, 'Consequatur et eius', 'consequatur-et-eius', '1978', '983', 'Tempora illo repudia', '/storage/books/consequatur-et-eius-1742110887.jpg', NULL, '93', '', 1, 0, 1, 20, 3, 2, 2, 3, '2025-03-16 01:41:27', '2025-03-16 01:41:27'),
+(6, 'Laboris quae ullamco', 'laboris-quae-ullamco', '1998', '869', 'Doloremque error ad', '/storage/books/laboris-quae-ullamco-1742110898.jpg', NULL, '978', '', 1, 0, 1, 17, 5, 5, 2, 2, '2025-03-16 01:41:38', '2025-03-16 01:41:38'),
+(7, 'Asperiores incididun', 'asperiores-incididun', '2008', '371', 'Elit veniam conseq', '/storage/books/asperiores-incididun-1742110906.jpg', NULL, '41', '', 0, 1, 1, 16, 2, 5, 2, 2, '2025-03-16 01:41:46', '2025-03-16 01:41:46'),
+(8, 'Qui cupidatat qui es', 'qui-cupidatat-qui-es', '2009', '267', 'Atque odit dolor fac', '/storage/books/qui-cupidatat-qui-es-1742110918.jpg', NULL, '942', '', 0, 1, 1, 22, 3, 4, 2, 1, '2025-03-16 01:41:58', '2025-03-16 01:41:58'),
+(9, 'Voluptatem facere si', 'voluptatem-facere-si', '1977', '955', 'Neque voluptas facil', '/storage/books/voluptatem-facere-si-1742110926.jpg', NULL, '304', '', 0, 0, 0, 21, 1, 4, 3, 1, '2025-03-16 01:42:06', '2025-03-16 01:42:06'),
+(10, 'Delectus dolorem in', 'delectus-dolorem-in', '1996', '37', 'Similique accusantiu', '/storage/books/delectus-dolorem-in-1742110962.jpg', NULL, '2', '', 1, 1, 0, 13, 2, 5, 3, 3, '2025-03-16 01:42:42', '2025-03-16 01:42:42'),
+(11, 'Modi adipisicing qui', 'modi-adipisicing-qui', '1976', '839', 'Exercitation sit off', '/storage/books/modi-adipisicing-qui-1742111975.jpg', NULL, '493', '', 1, 0, 1, 13, 4, 5, 1, 2, '2025-03-16 01:59:35', '2025-03-16 01:59:35'),
+(12, 'Laudantium omnis qu', 'laudantium-omnis-qu', '1976', '753', 'Ullamco enim dolorib', '/storage/books/laudantium-omnis-qu-1742111987.jpg', NULL, '357', '', 1, 1, 0, 13, 3, 4, 1, 3, '2025-03-16 01:59:47', '2025-03-16 01:59:47'),
+(13, 'Asperiores eius moll', 'asperiores-eius-moll', '1974', '430', 'Qui dolor optio ut', '/storage/books/asperiores-eius-moll-1742111998.jpg', NULL, '218', '', 1, 1, 1, 13, 5, 4, 2, 2, '2025-03-16 01:59:58', '2025-03-16 01:59:58'),
+(14, 'Id praesentium vel q', 'id-praesentium-vel-q', '1992', '271', 'Et iusto aperiam fug', '/storage/books/id-praesentium-vel-q-1742112010.jpg', NULL, '228', '', 0, 1, 0, 13, 5, 2, 2, 3, '2025-03-16 02:00:10', '2025-03-16 02:00:10'),
+(15, 'Qui eum dignissimos', 'qui-eum-dignissimos', '1984', '413', 'Corporis irure vel m', '/storage/books/qui-eum-dignissimos-1742112019.jpg', NULL, '643', '', 1, 1, 1, 13, 3, 1, 2, 1, '2025-03-16 02:00:19', '2025-03-16 02:00:19'),
+(16, 'Sit veniam in qui', 'sit-veniam-in-qui', '2001', '860', 'Voluptate quod enim', '/storage/books/sit-veniam-in-qui-1742112026.jpg', NULL, '950', '', 0, 1, 0, 13, 1, 4, 1, 2, '2025-03-16 02:00:26', '2025-03-16 02:00:26'),
+(17, 'Adipisicing eligendi', 'adipisicing-eligendi', '2009', '552', 'Quia esse illo non', '/storage/books/adipisicing-eligendi-1742112526.jpg', NULL, '148', '', 1, 0, 0, 13, 1, 5, 2, 3, '2025-03-16 02:08:46', '2025-03-16 02:08:46'),
+(18, 'Irure iusto et amet', 'irure-iusto-et-amet', '1973', '921', 'Soluta eum officia p', '/storage/books/irure-iusto-et-amet-1742112542.jpg', NULL, '697', '', 1, 1, 1, 13, 4, 4, 2, 2, '2025-03-16 02:09:02', '2025-03-16 02:09:02'),
+(19, 'Omnis alias qui ut c', 'omnis-alias-qui-ut-c', '1999', '97', 'Et consequat Quod m', '/storage/books/omnis-alias-qui-ut-c-1742112550.jpg', NULL, '824', '', 1, 1, 1, 13, 1, 4, 2, 3, '2025-03-16 02:09:10', '2025-03-16 02:09:10'),
+(20, 'Dicta officiis enim', 'dicta-officiis-enim', '1977', '645', 'Culpa exercitatione', '/storage/books/dicta-officiis-enim-1742112582.jpg', NULL, '508', '', 1, 1, 1, 13, 4, 5, 2, 1, '2025-03-16 02:09:42', '2025-03-16 02:09:42'),
+(22, 'Facere sint suscipit', 'facere-sint-suscipit', '1982', '821', 'Dolor qui officia pr', '/storage/books/facere-sint-suscipit-1742122814.png', NULL, '930', '28745', 1, 0, 1, 13, 5, 2, 3, 3, '2025-03-16 05:00:14', '2025-03-16 05:00:14'),
+(24, 'Aliquam reprehenderi', 'aliquam-reprehenderi', '2005', '165', 'Aspernatur ipsum nih', '/storage/books/aliquam-reprehenderi-1742123384.jpg', NULL, '667', '56221', 1, 1, 0, 13, 3, 2, 2, 3, '2025-03-16 05:09:44', '2025-03-16 05:09:44');
 
 -- --------------------------------------------------------
 
@@ -209,7 +229,7 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `title`, `description`, `map`, `created_at`, `updated_at`) VALUES
-(1, 'sfsdfgds111444444', 'sdafgdsf33344', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14608.036955469059!2d90.36556226266988!3d23.74704994976332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b33cffc3fb%3A0x4a826f475fd312af!2sDhanmondi%2C%20Dhaka%201205!5e0!3m2!1sen!2sbd!4v1741248308017!5m2!1sen!2sbd', NULL, '2025-03-12 00:29:33');
+(1, 'Contact Us', 'sdafgdsf33344', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14608.036955469059!2d90.36556226266988!3d23.74704994976332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b33cffc3fb%3A0x4a826f475fd312af!2sDhanmondi%2C%20Dhaka%201205!5e0!3m2!1sen!2sbd!4v1741248308017!5m2!1sen!2sbd', NULL, '2025-03-15 23:52:45');
 
 -- --------------------------------------------------------
 
@@ -425,7 +445,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('mkXqvOcLZDkLjsZUK0GAt6lf8MPmYxLIknq5QKkK', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoibVhNWTJpaWNxbWNmRmM1YTg4YnBDeTQxY3VvTlpGbnVhd0J5YXVWcCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kb25hdGUiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjk6InVzZXJFbWFpbCI7czoxNToic2FraWJAZ21haWwuY29tIjt9', 1741863450);
+('tTWapFnsEr9zkaC5Z7xXKUFCNXUV3tKaRN8CYlq4', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiQlBQYmlCcHdJQ05STTNIUnFEaHlaUFV5emZjT1RpN05BVEZHUDhWdSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ib29rL2ZhY2VyZS1zaW50LXN1c2NpcGl0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJ1c2VyRW1haWwiO3M6MTU6InNha2liQGdtYWlsLmNvbSI7fQ==', 1742123675);
 
 -- --------------------------------------------------------
 
@@ -593,7 +613,7 @@ ALTER TABLE `abouts`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `book_auths`

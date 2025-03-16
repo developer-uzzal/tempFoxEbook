@@ -50,7 +50,7 @@
                         </table> -->
 
                         <EasyDataTable buttons-pagination alternating :headers="header" :items="item"
-                            theme-color="#009A31" row-per-page="5" table-class-name="customize-table"
+                            theme-color="#009A31" :rows-per-page="10" table-class-name="customize-table"
                             :search-field="searchField" :search-value="searchValue" show-index>
 
                             <template #item-image="{ image }">
@@ -135,7 +135,7 @@ const page = usePage();
 
 const searchField = ['title'];
 const searchValue = ref('');
-const item = ref(page.props.list.data);
+const item = ref(page.props.list);
 
 
 //  for delate book

@@ -11,12 +11,12 @@ const page = usePage();
     <div class="container">
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <Link class="navbar-brand fw-bold" href="/"><img width="100" height="50" :src="page.props.menuFooter.logo? page.props.menuFooter.logo  : '/dashboard/assets/img/no-book.jpg'" alt="logo"></Link>
+                <Link class="navbar-brand fw-bold" href="/"><img width="100" height="50" :src="page.props.menuFooter.logo? `${'/' + page.props.menuFooter.logo}`  : '/dashboard/assets/img/no-book.jpg'" alt="logo"></Link>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-lg-between" id="navbarSupportedContent">
-                    <ul class="navbar-nav text-center col-md-4 d-flex justify-content-center">
+                    <ul class="navbar-nav text-center col-md-5 d-flex justify-content-center">
                         <li class="nav-item">
                             <Link class="nav-link fw-bold" :class="page.component === 'Home/Home' ? 'text-primary' : 'text-dark'" href="/" >Home</Link>
                         </li>
@@ -50,10 +50,10 @@ const page = usePage();
                             <Link class="nav-link text-dark fw-bold" href="/donate">Donate <i class="fa-solid fa-heart text-danger"></i></Link>
                         </li>
                     </ul>
-                    <form class="col-md-8">
+                    <form class="col-md-7">
                             <div class="input-group col-md-12 col-sm-12">
                                <input class="form-control form-control-lg focus-shadow-none focus-shadow-none" type="search"
-                                   placeholder="Search Book" aria-label="Search" v-model="searchValue">
+                                   placeholder="Search Book" aria-label="Search">
                                <button class="btn btn-primary px-4">
                                    <i class="fa-solid fa-magnifying-glass"></i>
                                </button>

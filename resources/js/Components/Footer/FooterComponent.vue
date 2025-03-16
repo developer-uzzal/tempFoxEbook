@@ -18,7 +18,7 @@ const page = usePage();
           <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
             <!-- Content -->
             <h6 class="text-uppercase fw-bold text-primary mt-0">
-              <img width="150" height="80" :src="page.props.menuFooter.logo? page.props.menuFooter.logo  : '/dashboard/assets/img/no-book.jpg'" alt="logo">
+              <img width="150" height="80" :src="page.props.menuFooter.logo? `${'/' + page.props.menuFooter.logo}`  : '/dashboard/assets/img/no-book.jpg'" alt="logo">
             </h6>
             <p>
               {{ page.props.menuFooter.short_des ? page.props.menuFooter.short_des : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.' }}

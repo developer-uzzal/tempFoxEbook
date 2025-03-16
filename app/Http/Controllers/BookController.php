@@ -19,20 +19,13 @@ use Illuminate\Support\Str;
 class BookController extends Controller
 {
     function AdminBookPage( Request $request){
-        if($request->input("search")){
-            $search = $request->input('search');
-            $list = Book::where('title', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(10);
-            $email = $request->session()->get('userEmail');
-            $user = User::where('email', $email)->first();
-            return Inertia::render("Auth/Book/BookList",['list' => $list,'user'=>$user]);
-        }else{
-
-            $list = Book::orderBy('id', 'desc')->paginate(10);
+        
+            $list = Book::orderBy('id', 'desc')->get();
             $email = $request->session()->get('userEmail');
             $user = User::where('email', $email)->first();
             return Inertia::render("Auth/Book/BookList",['list' => $list,'user'=>$user]);
 
-        }
+       
 
     }
 
@@ -80,8 +73,11 @@ class BookController extends Controller
 
 
                 $imgUrl = null;
+                $size = 0;
                 if ($request->hasFile('image')) {
                     $image = $request->file('image');
+                    $size = $image->getSize();
+                    
                     $extension = $image->getClientOriginalExtension(); // Get the file extension
                     $imageName = $slug . '-' . time() . '.' . $extension; // Unique filename
                     $imgPath = $image->storeAs('books', $imageName, 'public'); // Save in storage/app/public/books
@@ -97,6 +93,7 @@ class BookController extends Controller
                     'isbn' => $request->input('isbn'),
                     'publish_year' => $request->input('publish_year'),
                     'pageNumber' => $request->input('pageNumber'),
+                    'size'=> $size,
                     'country_id' => $request->input('country_id'),
                     'category_id' => $request->input('category_id'),
                     'book_auth_id' => $request->input('book_auth_id'),
