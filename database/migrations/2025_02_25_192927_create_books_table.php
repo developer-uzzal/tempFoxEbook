@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('isbn');
             $table->string('description');
             $table->string('image');
+            $table->string('file');
             $table->string('price')->nullable();
             $table->string('pageNumber');
             $table->string('size');

@@ -20,7 +20,7 @@
                                     </div>
 
                                     <div class="">
-                                        <label for="image" class="form-label">Image (972 X 500)</label>
+                                        <label for="image" class="form-label">Image (1920 X 1080)</label>
                                         <input type="file" class="form-control" id="image"
                                             @change="uploadImage($event)">
 

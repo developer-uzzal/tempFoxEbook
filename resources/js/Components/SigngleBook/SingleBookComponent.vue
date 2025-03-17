@@ -1,23 +1,31 @@
 <script setup>
 import { usePage } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3';
+import { router } from '@inertiajs/vue3';
 
 const page = usePage();
+
+const downloadBook = (file) => {
+    console.log(file);
+    router.get('/download-book/', { file: file }, {
+        preserveScroll: true
+    });
+}
+
+
 </script>
-
-
 
 <template>
     <div class="container my-5">
-    <div class="row">
+    <div class="row align-items-center">
         <!-- Book Cover -->
-        <div class="col-md-4 book-img text-center">
-            <img :src="page.props.book.image" class="book-cover rounded shadow-sm  shadow" alt="Book Cover">
+        <div class=" col-12 col-md-5 col-lg-4 col-xl-4 col-xxl-4  book-img text-center">
+            <img :src="page.props.book.image" class="book-cover rounded  shadow" alt="Book Cover">
         </div>
 
         <!-- Book Details -->
-        <div class="col-md-8">
-            <h1 class="fw-bold">{{ page.props.book.title }}</h1>
+        <div class="col-md-7">
+            <h1 class="fw-bold text-primary">{{ page.props.book.title }}</h1>
             <h5 class="text-muted">by {{ page.props.book.book_auth.name }}</h5>
 
             <!-- Book Description in Table -->
@@ -60,9 +68,14 @@ const page = usePage();
                 </tbody>
             </table>
 
+            <button @click="downloadBook(page.props.book.file)" class="btn btn-primary mt-3">
+                <i class="bi bi-book"></i> Download Now
+            </button>
+
             <a href="#" class="btn btn-primary mt-3">
                 <i class="bi bi-book"></i> Read Now
             </a>
+
         </div>
     </div>
 

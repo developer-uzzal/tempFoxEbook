@@ -99,11 +99,16 @@
                                 </div>
 
                                 <div class="col-md-4 mb-3">
-                                    <img  :src="form.previewImage? form.previewImage :  form.oldImage"
-                                        class="form-control form-control-sm" style="width: 100px; height: 80px" alt="">
+                                    <div class="">
+                                        <label for="image" class="form-label">Pdf file</label>
+                                        <input type="file" class="form-control" id="image" @change="uploadPdf($event)">
+
+                                    </div>
                                         
                                 </div>
                             </div>
+
+                            
 
 
 
@@ -117,20 +122,35 @@
 
 
                             <!-- Book Status -->
-                            <div class="mb-3">
-                                <label class="form-label d-block">Book Status</label>
-                                <div class="form-check form-check-inline">
-                                    <input type="checkbox" class="form-check-input" id="is_active" v-model="form.is_active">
-                                    <label class="form-check-label" for="is_active">Active</label>
+                            <div class="row">
+                                <!-- Book Status -->
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label d-block">Book Status</label>
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" class="form-check-input" id="is_active"
+                                            v-model="form.is_active">
+                                        <label class="form-check-label" for="is_active">Active</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" class="form-check-input" id="premium"
+                                            v-model="form.is_premium">
+                                        <label class="form-check-label" for="premium">Premium</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" class="form-check-input" id="is_trending"
+                                            v-model="form.is_trending">
+                                        <label class="form-check-label" for="is_trending">Trending</label>
+                                    </div>
+
+
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input type="checkbox" class="form-check-input" id="premium" v-model="form.is_premium">
-                                    <label class="form-check-label" for="premium">Premium</label>
+
+                                <div class="col-md-4 mb-3">
+                                    <img  :src="form.previewImage? form.previewImage :  form.oldImage"
+                                        class="form-control form-control-sm" style="width: 100px; height: 80px" alt="">
+
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input type="checkbox" class="form-check-input" id="is_trending" v-model="form.is_trending">
-                                    <label class="form-check-label" for="is_trending">Trending</label>
-                                </div>
+
                             </div>
 
                             <!-- Submit Button -->
@@ -170,13 +190,19 @@ const form = useForm({
     description: page.props.list.description,
     is_active: page.props.list.is_active ? true :false,
     is_premium: page.props.list.is_premium ? true :false,
-    is_trending: page.props.list.is_trending ? true :false
+    is_trending: page.props.list.is_trending ? true :false,
+    oldPdf: page.props.list.file,
+    pdfFile: ''
 
 })
 
 const uploadImage = (event) => {
     form.image = event.target.files[0];
     form.previewImage = URL.createObjectURL(event.target.files[0]);
+}
+
+const uploadPdf = (event) => {
+    form.pdfFile = event.target.files[0];
 }
 
 const submit = () => {

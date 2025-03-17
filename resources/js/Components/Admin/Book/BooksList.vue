@@ -58,12 +58,13 @@
                                     alt="">
                             </template>
 
-                            <template #item-number="{ id, image }">
+                            <template #item-number="{ id, image,file }">
                                 <div class="d-flex align-items-center my-2">
+                                    
                                     <Link class="btn btn-sm btn-secondary me-2" @click="bookEditClick(id)" href="#"><i
                                         class="fa-regular fa-pen-to-square"></i></Link>
                                     <Link class="btn btn-sm btn-danger" href="#" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal" @click="bookDeleteClick(id,image)"><i
+                                    data-bs-target="#deleteModal" @click="bookDeleteClick(id,image,file)"><i
                                         class="fa-regular fa-trash-can"></i></Link>
                                 </div>
                             </template>
@@ -142,6 +143,7 @@ const item = ref(page.props.list);
 const bookDelete = useForm({
     id: '',
     image: '',
+    pdfFile: ''
  })
 
  const bookEditClick = (id) => {
@@ -150,9 +152,10 @@ const bookDelete = useForm({
 
 
     // for delete book
-    const bookDeleteClick = (id, img) => {
+    const bookDeleteClick = (id, img, file) => {
         bookDelete.id = id;
         bookDelete.image = img;
+        bookDelete.pdfFile = file;
     }
 
     const deleteConfirm = () => {

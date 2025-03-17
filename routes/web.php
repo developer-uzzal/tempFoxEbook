@@ -31,6 +31,7 @@ Route::get('/trending',[TrandingController::class, 'index'])->name('trending');
 Route::get('/language',[LanguagesController::class, 'index'])->name('languages');
 Route::get('/contact',[ContactController::class, 'index'])->name('contact');
 Route::get('/donate',[DonateController::class, 'index'])->name('donate');
+Route::get('/download-book',[FrontendBookController::class,'bookDownload']);
 
 Route::get('/book/{slug}',[FrontendBookController::class,'SingleBook'])->name('SingleBook');
 

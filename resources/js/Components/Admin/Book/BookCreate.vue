@@ -57,23 +57,26 @@
                                     <label for="category_id" class="form-label">Category</label>
                                     <select class="form-select" id="category_id" v-model="form.category_id">
                                         <option selected disabled value="">Choose...</option>
-                                        <option :value="category.id" v-for="category in page.props.categories" :key="category.id">{{
-                                            category.name }}</option>
+                                        <option :value="category.id" v-for="category in page.props.categories"
+                                            :key="category.id">{{
+                                                category.name }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="book_language_id" class="form-label">Language</label>
                                     <select class="form-select" id="book_language_id" v-model="form.book_language_id">
                                         <option selected disabled value="">Choose...</option>
-                                        <option :value="language.id" v-for="language in page.props.languages" :key="language.id">{{
-                                            language.name }}</option>
+                                        <option :value="language.id" v-for="language in page.props.languages"
+                                            :key="language.id">{{
+                                                language.name }}</option>
                                     </select>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="book_auth_id" class="form-label">Author</label>
                                     <select class="form-select" id="book_auth_id" v-model="form.book_auth_id">
                                         <option selected disabled value="">Choose...</option>
-                                        <option :value="author.id" v-for="author in page.props.authors" :key="author.id">{{ author.name
+                                        <option :value="author.id" v-for="author in page.props.authors"
+                                            :key="author.id">{{ author.name
                                             }}</option>
                                     </select>
                                 </div>
@@ -85,7 +88,8 @@
                                     <label for="publication_id" class="form-label">Publication</label>
                                     <select class="form-select" id="publication_id" v-model="form.publication_id">
                                         <option selected disabled value="">Choose...</option>
-                                        <option :value="publication.id" v-for="publication in page.props.publications" :key="publication.id">
+                                        <option :value="publication.id" v-for="publication in page.props.publications"
+                                            :key="publication.id">
                                             {{ publication.name }}</option>
                                     </select>
                                 </div>
@@ -93,17 +97,23 @@
                                 <div class="col-md-4 mb-3">
                                     <div class="">
                                         <label for="image" class="form-label">Book Cover Image (232x320)</label>
-                                        <input type="file" class="form-control" id="image" @change="uploadImage($event)">
+                                        <input type="file" class="form-control" id="image"
+                                            @change="uploadImage($event)">
 
                                     </div>
                                 </div>
 
                                 <div class="col-md-4 mb-3">
-                                    <img  :src="form.previewImage === '' ? '/dashboard/assets/img/no-book.jpg' : form.previewImage"
-                                        class="form-control form-control-sm" style="width: 100px; height: 80px" alt="">
-                                        
+                                    <div class="">
+                                        <label for="image" class="form-label">Pdf file</label>
+                                        <input type="file" class="form-control" id="image" @change="uploadPdf($event)">
+
+                                    </div>
+
                                 </div>
                             </div>
+
+
 
 
 
@@ -116,21 +126,35 @@
 
 
 
-                            <!-- Book Status -->
-                            <div class="mb-3">
-                                <label class="form-label d-block">Book Status</label>
-                                <div class="form-check form-check-inline">
-                                    <input type="checkbox" class="form-check-input" id="is_active" v-model="form.is_active">
-                                    <label class="form-check-label" for="is_active">Active</label>
+                            <div class="row">
+                                <!-- Book Status -->
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label d-block">Book Status</label>
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" class="form-check-input" id="is_active"
+                                            v-model="form.is_active">
+                                        <label class="form-check-label" for="is_active">Active</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" class="form-check-input" id="premium"
+                                            v-model="form.is_premium">
+                                        <label class="form-check-label" for="premium">Premium</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="checkbox" class="form-check-input" id="is_trending"
+                                            v-model="form.is_trending">
+                                        <label class="form-check-label" for="is_trending">Trending</label>
+                                    </div>
+
+
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input type="checkbox" class="form-check-input" id="premium" v-model="form.is_premium">
-                                    <label class="form-check-label" for="premium">Premium</label>
+
+                                <div class="col-md-4 mb-3">
+                                    <img :src="form.previewImage === '' ? '/dashboard/assets/img/no-book.jpg' : form.previewImage"
+                                        class="form-control form-control-sm" style="width: 100px; height: 80px" alt="">
+
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input type="checkbox" class="form-check-input" id="is_trending" v-model="form.is_trending">
-                                    <label class="form-check-label" for="is_trending">Trending</label>
-                                </div>
+
                             </div>
 
                             <!-- Submit Button -->
@@ -168,7 +192,8 @@ const form = useForm({
     description: '',
     is_active: false,
     is_premium: false,
-    is_trending: false
+    is_trending: false,
+    pdfFile: ''
 
 })
 
@@ -177,109 +202,113 @@ const uploadImage = (event) => {
     form.previewImage = URL.createObjectURL(event.target.files[0]);
 }
 
+const uploadPdf = (event) => {
+    form.pdfFile = event.target.files[0];
+}
+
 const submit = () => {
 
-    if(form.title == ''){
+    if (form.title == '') {
         new Notify({
             status: 'error',
             title: 'Book title is required',
             autotimeout: 2000,
         })
-        
-    }else if(form.isbn == '') {
+
+    } else if (form.isbn == '') {
         new Notify({
             status: 'error',
             title: 'ISBN is required',
             autotimeout: 2000,
         })
-    }else if(form.publish_year == '') {
+    } else if (form.publish_year == '') {
         new Notify({
             status: 'error',
             title: 'Publish year is required',
             autotimeout: 2000,
         })
-    }else if(form.pageNumber == '') {
+    } else if (form.pageNumber == '') {
         new Notify({
             status: 'error',
             title: 'Page number is required',
             autotimeout: 2000,
         })
-    }else if(form.country_id == '') {
+    } else if (form.country_id == '') {
         new Notify({
             status: 'error',
             title: 'Country is required',
             autotimeout: 2000,
         })
-    }else if(form.category_id == '') {
+    } else if (form.category_id == '') {
         new Notify({
             status: 'error',
             title: 'Category is required',
             autotimeout: 2000,
         })
-    }else if(form.book_language_id == '') {
+    } else if (form.book_language_id == '') {
         new Notify({
             status: 'error',
             title: 'Language is required',
             autotimeout: 2000,
         })
-    }else if(form.book_auth_id == '') {
+    } else if (form.book_auth_id == '') {
         new Notify({
             status: 'error',
             title: 'Author is required',
             autotimeout: 2000,
         })
-    }else if(form.publication_id == '') {
+    } else if (form.publication_id == '') {
         new Notify({
             status: 'error',
             title: 'Publication is required',
             autotimeout: 2000,
         })
-    }else if(form.image == '') {
+    } else if (form.image == '') {
         new Notify({
             status: 'error',
             title: 'Image is required',
             autotimeout: 2000,
         })
-    }else if(form.description == '') {
+    } else if (form.description == '') {
         new Notify({
             status: 'error',
             title: 'Description is required',
             autotimeout: 2000,
         })
-    }else{
+    } else {
         form.post('/user-books-create', {
-        onSuccess: () => {
-            if (page.props.flash.success) {
-                new Notify({
-                    status: 'success',
-                    title: page.props.flash.success.message,
-                    autotimeout: 2000,
-                })
-                form.reset();
-                router.get('/user-create-books')
-            }else if(page.props.flash.error){
+            onSuccess: () => {
+                if (page.props.flash.success) {
+                    new Notify({
+                        status: 'success',
+                        title: page.props.flash.success.message,
+                        autotimeout: 2000,
+                    })
+                    form.reset();
+                    router.get('/user-create-books')
+                } else if (page.props.flash.error) {
+                    new Notify({
+                        status: 'error',
+                        title: page.props.flash.error.message,
+                        autotimeout: 2000,
+                    })
+                }
+
+
+            },
+            onError: () => {
                 new Notify({
                     status: 'error',
-                    title: page.props.flash.error.message,
+                    title: 'Create failed',
                     autotimeout: 2000,
                 })
             }
-            
-            
-        },
-        onError: () => {
-            new Notify({
-                status: 'error',
-                title: 'Create failed',
-                autotimeout: 2000,
-            })
-        }
-    }); 
+        });
     }
 
-    
 
-    
+
+
 }
 
 </script>

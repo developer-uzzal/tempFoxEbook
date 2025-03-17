@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Book;
 use App\Models\BookLanguage;
 use App\Models\Category;
 use App\Models\HomeBanner;
@@ -19,7 +20,9 @@ class HomeController extends Controller
         $categories = Category::Where('is_active', 1)->orderBy('name', 'asc')->get();
         $languages = BookLanguage::orderBy('name', 'asc')->get();
         $banner = HomeBanner::first();
-        return Inertia::render('Home/Home',["menuFooter" => $menuFooter,"categories"=> $categories,'list'=> $banner,'languages'=>$languages]);
+        $trending = Book::where('is_trending', 1)->orderBy('created_at', 'desc')->limit(6)->get();
+        $latest = Book::where('is_active',1)->where('is_trending', 0)->orderBy('created_at', 'desc')->limit(18)->get();
+        return Inertia::render('Home/Home',["menuFooter" => $menuFooter,"categories"=> $categories,'banner'=> $banner,'languages'=>$languages,'trending'=>$trending,'latest'=>$latest]);
     }
 
     function AdminSliderPage(Request $request){

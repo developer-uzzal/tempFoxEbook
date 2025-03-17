@@ -5,13 +5,12 @@ const page = usePage();
 
 <template>
     <div class="container mt-3 ">
-        <div class="d-flex">
-            <div class="col-lg-3 d-none d-md-none d-lg-block d-xl-block d-xxl-block">
-                <ul class="list-group">
+        <div class="d-flex ">
+            <div class="col-lg-3 d-none d-md-none d-lg-block d-xl-block d-xxl-block p-0 m-0">
+                <ul class="list-group  rounded-0">
                     <li class="list-group-item active p-2 fs-5 fw-bold" aria-current="true"><i class="fa-solid fa-list me-2 fa-fw fs-5"></i>Categories</li>
                     <li class="list-group-item" v-for="(category, index) in page.props.categories.slice(0, 10)" :key="index"><a class="fw-bold text-decoration-none" href="#">{{ category.name? category.name : 'Unknown' }}</a></li>
 
-                    <li class="list-group-item" v-if="page.props.categories.length > 9"><a class="fw-bold text-decoration-none" href="#">See More Categories...</a></li>
                     <!-- Accordion List Item -->
                     <!-- <li class="list-group-item p-0">
                         <div class="accordion" id="accordionExample">
@@ -44,9 +43,9 @@ const page = usePage();
             </div>
 
 
-            <div class="col-md-12 col-lg-9  hero-section">
+            <div class="col-md-12 col-lg-9  hero-section p-0 m-0">
                 <div style="">
-                    <img class="w-100" src="/public/Home/banner.jpeg" alt="">
+                    <img class="w-100" :src="page.props.banner.img? page.props.banner.img : '/public/Home/banner.jpeg'" alt="">
                 </div>
             </div>
 
@@ -58,11 +57,11 @@ const page = usePage();
 <style scoped>
 .hero-section{
     width: 100%;
-    height: 500px;
+    height: 458px;
 }
 
 .hero-section img{
-        height: 500px;
+        height: 458px;
     }
 
     @media (max-width: 1000px) {

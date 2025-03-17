@@ -12,6 +12,7 @@ class Book extends Model
         'isbn',
         'description',
         'image',
+        'file',
         'status',
         'publish_year',
         'pageNumber',

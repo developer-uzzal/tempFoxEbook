@@ -1,5 +1,8 @@
 <script setup>
+import { usePage } from '@inertiajs/vue3';
+import { Link } from '@inertiajs/vue3';
 
+const page = usePage();
 </script>
 
 <template>
@@ -7,111 +10,35 @@
     <br>
     <div class="container my-4">
 
-        <div class="">
+        
 
-            <h2 class="border-bottom border-2 border-primary d-inline pb-2">Trending Books</h2>
-
-            <div class="row my-5">
-
-                <div class="col-md-2 col-sm-4 col-6">
-                    <div class="card border-primary shadow-sm">
-                        <div class="card-body text-center">
-                            <img class="book-image rounded" src="/public/Home/book2.jpg" alt="Book Cover">
-                            <h6 class="mt-2 text-truncate">Shar Arbaeen</h6>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-sm btn-primary">View</a>
+            <div class="mt-5">
+                <h3>Trending Books</h3>
+                <div class="row">
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" v-for="book in page.props.trending"
+                        :key="book.id">
+                        <div class="card border-primary shadow-sm">
+                            <div class="card-body text-center">
+                                <img class="related-book-img rounded" :src="book.image" alt="Book Cover">
+                                <h6 class="mt-2 text-truncate">{{ book.title }}</h6>
+                            </div>
+                            <div class="card-footer text-center">
+                                <Link :href="`/book/${book.slug}`" class="btn btn-sm btn-primary">View</Link>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-2 col-6">
-                    <div class="card border-primary shadow-sm">
-                        <div class="card-body text-center">
-                            <img class="book-image rounded" src="/public/Home/book2.jpg" alt="Book Cover">
-                            <h6 class="mt-2 text-truncate">Shar Arbaeen</h6>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-sm btn-primary">View</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-2 col-6">
-                    <div class="card border-primary shadow-sm">
-                        <div class="card-body text-center">
-                            <img class="book-image rounded" src="/public/Home/book2.jpg" alt="Book Cover">
-                            <h6 class="mt-2 text-truncate">Shar Arbaeen</h6>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-sm btn-primary">View</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-2 col-6">
-                    <div class="card border-primary shadow-sm">
-                        <div class="card-body text-center">
-                            <img class="book-image rounded" src="/public/Home/book2.jpg" alt="Book Cover">
-                            <h6 class="mt-2 text-truncate">Shar Arbaeen</h6>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-sm btn-primary">View</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-2 col-6">
-                    <div class="card border-primary shadow-sm">
-                        <div class="card-body text-center">
-                            <img class="book-image rounded" src="/public/Home/book2.jpg" alt="Book Cover">
-                            <h6 class="mt-2 text-truncate">Shar Arbaeen</h6>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-sm btn-primary">View</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-2 col-6">
-                    <div class="card border-primary shadow-sm">
-                        <div class="card-body text-center">
-                            <img class="book-image rounded" src="/public/Home/book2.jpg" alt="Book Cover">
-                            <h6 class="mt-2 text-truncate">Shar Arbaeen</h6>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn-sm btn-primary">View</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <button type="button" class="btn btn-primary mt-3 d-block mx-auto">View All <i
-                            class="fa-solid fa-arrow-right"></i></button>
-                </div>
-
             </div>
 
-        </div>
+        
     </div>
 </template>
 
 <style scoped>
 
-/* Standardized book image size */
-.book-image {
-    width: 120px;
-    /* Same width for all */
+.related-book-img {
+    width: 80%; /* Adjust for smaller related book covers */
     height: 160px;
-    /* Same height for all */
     object-fit: cover;
-    /* Ensures images are cropped properly */
-}
-
-/* Ensure long titles do not break layout */
-.text-truncate {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 </style>
