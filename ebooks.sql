@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2025 at 12:29 PM
+-- Generation Time: Mar 18, 2025 at 07:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -83,7 +83,7 @@ CREATE TABLE `books` (
 INSERT INTO `books` (`id`, `title`, `slug`, `publish_year`, `isbn`, `description`, `image`, `file`, `price`, `pageNumber`, `size`, `is_active`, `is_premium`, `is_trending`, `category_id`, `book_language_id`, `book_auth_id`, `publication_id`, `country_id`, `created_at`, `updated_at`) VALUES
 (34, 'Braiding Sweetgrass: Indigenous Wisdom,', 'braiding-sweetgrass-indigenous-wisdom', '1997', '98', 'Sed quo consequatur', '/storage/books/braiding-sweetgrass-indigenous-wisdom-1742204915.jpg', '/storage/pdf/braiding-sweetgrass-indigenous-wisdom-1742204915.pdf', NULL, '824', '1651264', 1, 1, 1, 19, 1, 5, 1, 2, '2025-03-17 03:48:35', '2025-03-17 03:48:35'),
 (35, 'Enim quia eos quia s', 'enim-quia-eos-quia-s', '1978', '690', 'Perferendis illum v', '/storage/books/enim-quia-eos-quia-s-1742204936.jpg', '/storage/pdf/enim-quia-eos-quia-s-1742204936.pdf', NULL, '908', '2129199', 1, 1, 0, 4, 3, 4, 1, 2, '2025-03-17 03:48:56', '2025-03-17 11:28:57'),
-(37, 'Et qui qui in aut vo', 'et-qui-qui-in-aut-vo', '1983', '773', 'Tempor eligendi simi', '/storage/books/et-qui-qui-in-aut-vo-1742206387.jpg', '/storage/pdf/et-qui-qui-in-aut-vo-1742206387.jpg', NULL, '506', '11392', 1, 0, 1, 18, 3, 2, 3, 2, '2025-03-17 04:13:07', '2025-03-17 10:17:36');
+(37, 'Et qui qui in aut vo', 'et-qui-qui-in-aut-vo', '1983', '773', 'Tempor eligendi simi', '/storage/books/et-qui-qui-in-aut-vo-1742206387.jpg', '/storage/pdf/et-qui-qui-in-aut-vo-1742206387.jpg', NULL, '506', '11392', 1, 0, 1, 18, 3, 2, 3, 2, '2025-03-17 04:13:07', '2025-03-18 05:25:56');
 
 -- --------------------------------------------------------
 
@@ -428,7 +428,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('3hZIoavSM4oI6gOmAiI0NFELttesF0spDwbqlCUU', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiMWJaNlVSTE9iQnhiQ2g3VlhsaHdabFh1UWhaUDFSMjhjU1haNTZrVSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ib29rL2VuaW0tcXVpYS1lb3MtcXVpYS1zIjt9czo5OiJ1c2VyRW1haWwiO3M6MTU6InNha2liQGdtYWlsLmNvbSI7fQ==', 1742210880);
+('x2k7K3PSMxqyIOCvwp2PZlySDsfjvpECFDX7sLWk', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZm5TazNzc0llTWlmYU5rTHR2QmYwNWZKdnYycDQxWDN0SkxONWNhYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6ODI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kb3dubG9hZC1ib29rP2ZpbGU9cGRmJTJGZXQtcXVpLXF1aS1pbi1hdXQtdm8tMTc0MjIwNjM4Ny5qcGciO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjk6InVzZXJFbWFpbCI7czoxNToic2FraWJAZ21haWwuY29tIjt9', 1742278206);
 
 -- --------------------------------------------------------
 

@@ -56,9 +56,10 @@ const page = usePage();
             <p>
               <Link href="/donate" class="text-reset text-decoration-none text-primary">Donate</Link>
             </p>
-            <p>
+            <!-- <p>
               <Link href="/authors" class="text-reset text-decoration-none text-primary">Authors</Link>
-            </p>
+            </p> -->
+
             <p>
               <Link href="/contact" class="text-reset text-decoration-none text-primary">Contact</Link>
             </p>

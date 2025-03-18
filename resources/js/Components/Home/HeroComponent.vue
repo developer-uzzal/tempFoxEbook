@@ -1,5 +1,6 @@
 <script setup>
 import { usePage } from '@inertiajs/vue3';
+import { Link } from '@inertiajs/vue3';
 const page = usePage();
 </script>
 
@@ -9,7 +10,7 @@ const page = usePage();
             <div class="col-lg-3 d-none d-md-none d-lg-block d-xl-block d-xxl-block p-0 m-0">
                 <ul class="list-group  rounded-0">
                     <li class="list-group-item active p-2 fs-5 fw-bold" aria-current="true"><i class="fa-solid fa-list me-2 fa-fw fs-5"></i>Categories</li>
-                    <li class="list-group-item" v-for="(category, index) in page.props.categories.slice(0, 10)" :key="index"><a class="fw-bold text-decoration-none" href="#">{{ category.name? category.name : 'Unknown' }}</a></li>
+                    <li class="list-group-item" v-for="(category, index) in page.props.categories.slice(0, 10)" :key="index"><Link class="fw-bold text-decoration-none" :href="`category/${category.slug}`">{{ category.name? category.name : 'Unknown' }}</Link></li>
 
                     <!-- Accordion List Item -->
                     <!-- <li class="list-group-item p-0">

@@ -2,16 +2,36 @@
 import { usePage } from '@inertiajs/vue3';
 import { Link } from '@inertiajs/vue3';
 import { router } from '@inertiajs/vue3';
-
+import axios from "axios";
 const page = usePage();
 
-const downloadBook = (file) => {
-    console.log(file);
-    router.get('/download-book/', { file: file }, {
-        preserveScroll: true
-    });
-}
+// const downloadBook = (file) => {
+//     console.log(file);
+//     router.get('/download-book/', { file: file }, {
+//         preserveScroll: true
+//     });
+// }
 
+
+const downloadBook = async (file) => {
+    try {
+        const filePath = file.replace('/storage/', '');
+        const response = await axios.get('/download-book', {
+            params: { file: filePath },
+            responseType: 'blob'
+        });
+
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'book.pdf');
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+    } catch (error) {
+        console.error("Download failed:", error);
+    }
+};
 
 </script>
 
@@ -25,8 +45,8 @@ const downloadBook = (file) => {
 
         <!-- Book Details -->
         <div class="col-md-7">
-            <h1 class="fw-bold text-primary">{{ page.props.book.title }}</h1>
-            <h5 class="text-muted">by {{ page.props.book.book_auth.name }}</h5>
+            <h2 class="fw-bold text-primary">{{ page.props.book.title }}</h2>
+            <h5 class="text-muted">by <Link class="text-primary text-decoration-none" :href="`/author/${page.props.book.book_auth.slug}`">{{ page.props.book.book_auth.name }}</Link> </h5>
 
             <!-- Book Description in Table -->
             <table class="table table-bordered mt-3">
@@ -71,6 +91,10 @@ const downloadBook = (file) => {
             <button @click="downloadBook(page.props.book.file)" class="btn btn-primary mt-3">
                 <i class="bi bi-book"></i> Download Now
             </button>
+
+            <a :href="`/download-book/${page.props.book.file}`" class="btn btn-primary mt-3">
+                <i class="bi bi-book"></i> Download Now
+            </a>
 
             <a href="#" class="btn btn-primary mt-3">
                 <i class="bi bi-book"></i> Read Now

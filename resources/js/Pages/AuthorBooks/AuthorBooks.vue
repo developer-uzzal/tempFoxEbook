@@ -4,14 +4,14 @@ defineOptions({
     layout: guestLayout
 })
 
-import TrandingComponent from '../../Components/Tranding/TrandingComponent.vue';
+import AuthorBookComponent from '../../Components/AuthorBooks/AuthorBookComponent.vue';
 
 </script>
 
 <template>
 
-    
-    <TrandingComponent></TrandingComponent>
+
+    <AuthorBookComponent></AuthorBookComponent>
 
 </template>
 

@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\AuthorsController;
 use App\Http\Controllers\Frontend\BookController as FrontendBookController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\DonateController;
+use App\Http\Controllers\Frontend\FontCategoryController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\LanguagesController;
 use App\Http\Controllers\Frontend\TrandingController;
@@ -27,11 +28,12 @@ use Inertia\Inertia;
 Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/about',[AboutController::class, 'index'])->name('about');
 Route::get('/authors',[AuthorsController::class, 'index'])->name('authors');
-Route::get('/trending',[TrandingController::class, 'index'])->name('trending');
+Route::get('/author/{slug}',[AuthorsController::class, 'authorBooks'])->name('authors.books');
+Route::get('/category/{slug}',[FontCategoryController::class, 'index'])->name('category');
 Route::get('/language',[LanguagesController::class, 'index'])->name('languages');
 Route::get('/contact',[ContactController::class, 'index'])->name('contact');
 Route::get('/donate',[DonateController::class, 'index'])->name('donate');
-Route::get('/download-book',[FrontendBookController::class,'bookDownload']);
+Route::get('/download-book',[FrontendBookController::class,'bookDownload'])->name('book.download');
 
 Route::get('/book/{slug}',[FrontendBookController::class,'SingleBook'])->name('SingleBook');
 

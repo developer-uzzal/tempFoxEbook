@@ -21,7 +21,7 @@ class BookController extends Controller
         $languages = BookLanguage::orderBy('name', 'asc')->get();
 
         $book = Book::whereSlug($slug)->with('category')->with('bookAuth')->with('bookLanguage')->with('publication')->with('country')->first();
-        
+
         // Check if book is found
         if ($book) {
             $relatedBooks = Book::where('category_id', $book->category_id)
@@ -42,21 +42,28 @@ class BookController extends Controller
         ]);
     }
 
-    function bookDownload(Request $request)
+    public function bookDownload(Request $request)
     {
+
+        // $filePath = $request->file;
+
+        // // storage/pdf/et-qui-qui-in-aut-vo-1742206387.jpg
+        // if (!Storage::disk('public')->exists($filePath)) {
+
+        //     return response()->json(['error' => 'File not found'], 404);
+        // }
+
+        // return Storage::disk('public')->download($filePath, "book.pdf");
+
+
         $filePath = $request->file;
 
-        // dd($filePath);
-        // // dd($filePath);
-        // // $path = public_path($filePath);
-        // // return response()->download($path, "book.pdf");
+        if (!$filePath || !Storage::disk('public')->exists($filePath)) {
+            return response()->json(['error' => 'File not found'], 404);
+        }
 
-        // $path = Storage::disk('public')->path($filePath);
-
-        // dd($path);
-
-        return response()->download("/storage/pdf/enim-quia-eos-quia-s-1742204936.pdf");
-       
-        
+        return response()->streamDownload(function () use ($filePath) {
+            echo Storage::disk('public')->get($filePath);
+        }, basename($filePath));
     }
 }
