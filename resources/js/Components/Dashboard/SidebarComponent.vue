@@ -139,12 +139,6 @@
             </a>
             <ul class="nav nav-treeview" >
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Change Info</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <Link href="/menu-footer" class="nav-link" :class="page.url === '/menu-footer' ? 'active' : ''">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Menu and Footer</p>
@@ -163,13 +157,13 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <Link href="/new-updates-contact" class="nav-link" :class="page.url === '/new-updates-contact' ? 'active' : ''">
               <i class="nav-icon fa-regular fa-folder-open"></i>
               <p>
-                More ....
-                <span class="right badge badge-danger">New</span>
+                Contact Updates
+                <span v-if="page.props.member + page.props.contactMessage > 0" class="right badge badge-danger">New</span>
               </p>
-            </a>
+            </Link>
           </li>
 
           <li class="nav-item">

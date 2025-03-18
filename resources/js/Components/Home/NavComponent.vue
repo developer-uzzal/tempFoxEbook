@@ -1,8 +1,37 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import { usePage } from '@inertiajs/vue3';
+import { router } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
 const page = usePage();
+
+const search1 = ref('')
+
+const slugify = (text) => {
+    return text
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9 -]/g, '') // Remove invalid characters
+        .replace(/\s+/g, '-') // Replace spaces with dashes
+        .replace(/-+/g, '-') // Remove multiple dashes
+}
+
+const submit = () => {
+    if (search1.value.trim() === '') {
+        new Notify({
+            status: 'error',
+            title: 'Search Field is required',
+            autotimeout: 2000,
+        })
+        return
+    }
+
+    const search = slugify(search1.value)
+    
+
+    router.get("/search/"+search)
+}
 </script>
 
 <template>
@@ -41,7 +70,7 @@ const page = usePage();
                                 Languages
                             </Link>
                             <ul class="dropdown-menu">
-                                <li><Link class="dropdown-item text-dark fw-bold" v-for="(language, index) in page.props.languages" :key="index" :href="'/language/' + language.slug">{{ language.name? language.name : 'Unknown' }}</Link></li>
+                                <li><Link class="dropdown-item text-dark fw-bold" :href="`/book/language/${language.slug}`" v-for="(language, index) in page.props.languages" :key="index">{{ language.name? language.name : 'Unknown' }}</Link></li>
                                 
                             </ul>
                         </li>
@@ -50,15 +79,15 @@ const page = usePage();
                             <Link class="nav-link text-dark fw-bold" href="/donate">Donate <i class="fa-solid fa-heart text-danger"></i></Link>
                         </li>
                     </ul>
-                    <form class="col-md-7">
+                    <div class="col-md-7">
                             <div class="input-group col-md-12 col-sm-12">
-                               <input class="form-control form-control-lg focus-shadow-none focus-shadow-none" type="search"
+                               <input v-model="search1" class="form-control form-control-lg focus-shadow-none focus-shadow-none" type="search"
                                    placeholder="Search Book" aria-label="Search">
-                               <button class="btn btn-primary px-4">
+                               <button class="btn btn-primary px-4" @click="submit">
                                    <i class="fa-solid fa-magnifying-glass"></i>
                                </button>
                            </div>
-                    </form>
+                        </div>
                 </div>
             </div>
         </nav>

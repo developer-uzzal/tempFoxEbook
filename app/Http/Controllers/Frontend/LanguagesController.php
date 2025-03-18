@@ -10,9 +10,12 @@ use Inertia\Inertia;
 
 class LanguagesController extends Controller
 {
-    function index(){
+    function index(Request $request,$slug){
+        $slug = $slug;
+        
+        $book = BookLanguage::where("slug",$slug)->with('book')->first();
         $menuFooter = MenuFooter::first();
         $languages = BookLanguage::orderBy('name', 'asc')->get();
-        return Inertia::render('Languages/Languages',["menuFooter" => $menuFooter,"languages"=> $languages]);
+        return Inertia::render('Languages/Languages',["menuFooter" => $menuFooter,"languages"=> $languages,"book"=> $book]);
     }
 }

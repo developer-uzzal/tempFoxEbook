@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2025 at 07:14 AM
+-- Generation Time: Mar 18, 2025 at 01:26 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -72,6 +72,7 @@ CREATE TABLE `books` (
   `book_auth_id` bigint(20) UNSIGNED NOT NULL,
   `publication_id` bigint(20) UNSIGNED NOT NULL,
   `country_id` bigint(20) UNSIGNED NOT NULL,
+  `download` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -80,10 +81,10 @@ CREATE TABLE `books` (
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`id`, `title`, `slug`, `publish_year`, `isbn`, `description`, `image`, `file`, `price`, `pageNumber`, `size`, `is_active`, `is_premium`, `is_trending`, `category_id`, `book_language_id`, `book_auth_id`, `publication_id`, `country_id`, `created_at`, `updated_at`) VALUES
-(34, 'Braiding Sweetgrass: Indigenous Wisdom,', 'braiding-sweetgrass-indigenous-wisdom', '1997', '98', 'Sed quo consequatur', '/storage/books/braiding-sweetgrass-indigenous-wisdom-1742204915.jpg', '/storage/pdf/braiding-sweetgrass-indigenous-wisdom-1742204915.pdf', NULL, '824', '1651264', 1, 1, 1, 19, 1, 5, 1, 2, '2025-03-17 03:48:35', '2025-03-17 03:48:35'),
-(35, 'Enim quia eos quia s', 'enim-quia-eos-quia-s', '1978', '690', 'Perferendis illum v', '/storage/books/enim-quia-eos-quia-s-1742204936.jpg', '/storage/pdf/enim-quia-eos-quia-s-1742204936.pdf', NULL, '908', '2129199', 1, 1, 0, 4, 3, 4, 1, 2, '2025-03-17 03:48:56', '2025-03-17 11:28:57'),
-(37, 'Et qui qui in aut vo', 'et-qui-qui-in-aut-vo', '1983', '773', 'Tempor eligendi simi', '/storage/books/et-qui-qui-in-aut-vo-1742206387.jpg', '/storage/pdf/et-qui-qui-in-aut-vo-1742206387.jpg', NULL, '506', '11392', 1, 0, 1, 18, 3, 2, 3, 2, '2025-03-17 04:13:07', '2025-03-18 05:25:56');
+INSERT INTO `books` (`id`, `title`, `slug`, `publish_year`, `isbn`, `description`, `image`, `file`, `price`, `pageNumber`, `size`, `is_active`, `is_premium`, `is_trending`, `category_id`, `book_language_id`, `book_auth_id`, `publication_id`, `country_id`, `download`, `created_at`, `updated_at`) VALUES
+(34, 'Braiding Sweetgrass: Indigenous Wisdom,', 'braiding-sweetgrass-indigenous-wisdom', '1997', '98', 'Sed quo consequatur', '/storage/books/braiding-sweetgrass-indigenous-wisdom-1742204915.jpg', '/storage/pdf/braiding-sweetgrass-indigenous-wisdom-1742204915.pdf', NULL, '824', '1651264', 1, 1, 1, 19, 1, 5, 1, 2, 0, '2025-03-17 03:48:35', '2025-03-17 03:48:35'),
+(35, 'Enim quia eos quia s', 'enim-quia-eos-quia-s', '1978', '690', 'Perferendis illum v', '/storage/books/enim-quia-eos-quia-s-1742204936.jpg', '/storage/pdf/enim-quia-eos-quia-s-1742204936.pdf', NULL, '908', '2129199', 1, 0, 1, 4, 3, 4, 1, 2, 2, '2025-03-17 03:48:56', '2025-03-18 02:30:58'),
+(37, 'Et qui qui in aut vo', 'et-qui-qui-in-aut-vo', '1983', '773', 'Tempor eligendi simi', '/storage/books/et-qui-qui-in-aut-vo-1742206387.jpg', '/storage/pdf/et-qui-qui-in-aut-vo-1742206387.jpg', NULL, '506', '11392', 1, 0, 0, 18, 3, 2, 3, 2, 0, '2025-03-17 04:13:07', '2025-03-18 02:49:52');
 
 -- --------------------------------------------------------
 
@@ -212,7 +213,35 @@ CREATE TABLE `contacts` (
 --
 
 INSERT INTO `contacts` (`id`, `title`, `description`, `map`, `created_at`, `updated_at`) VALUES
-(1, 'Contact Us', 'sdafgdsf33344', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14608.036955469059!2d90.36556226266988!3d23.74704994976332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b33cffc3fb%3A0x4a826f475fd312af!2sDhanmondi%2C%20Dhaka%201205!5e0!3m2!1sen!2sbd!4v1741248308017!5m2!1sen!2sbd', NULL, '2025-03-15 23:52:45');
+(1, 'Contact Us', 'Ebook is a leading e-book website in Bangladesh. We offer thousands of islamic, general and academic books at a zero price.', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14608.036955469059!2d90.36556226266988!3d23.74704994976332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b33cffc3fb%3A0x4a826f475fd312af!2sDhanmondi%2C%20Dhaka%201205!5e0!3m2!1sen!2sbd!4v1741248308017!5m2!1sen!2sbd', NULL, '2025-03-18 02:04:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_messages`
+--
+
+CREATE TABLE `contact_messages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` longtext NOT NULL,
+  `is_read` tinyint(1) NOT NULL DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contact_messages`
+--
+
+INSERT INTO `contact_messages` (`id`, `name`, `email`, `phone`, `subject`, `message`, `is_read`, `created_at`, `updated_at`) VALUES
+(1, 'Evan Gentry', 'qibyf@mailinator.com', '+1 (842) 547-1924', 'Ut magna unde volupt', 'Iusto anim sequi rer', 1, '2025-03-18 02:03:46', '2025-03-18 05:09:24'),
+(2, 'Emily Castaneda', 'dydydol@mailinator.com', '+1 (425) 921-2038', 'Molestiae autem vel', 'Est quo temporibus s', 1, '2025-03-18 02:04:12', '2025-03-18 05:09:16'),
+(3, 'Ruth Hewitt', 'byjudovo@mailinator.com', '+1 (598) 497-4036', 'Commodi magna aut eo', '	bookDew is a platform dedicated to providing high-quality e-books for free. Whether you\'re an avid reader, a student, or simply looking to explore new knowledge, bookDew offers a vast collection across various genres. Our mission is to make reading access', 1, '2025-03-18 02:06:57', '2025-03-18 05:09:20'),
+(4, 'Seth Schwartz', 'lewa@mailinator.com', '+1 (775) 288-5991', 'Ut fugiat quia Nam q', 'Enim eum sit saepe p', 1, '2025-03-18 05:10:58', '2025-03-18 05:11:31');
 
 -- --------------------------------------------------------
 
@@ -317,10 +346,19 @@ CREATE TABLE `job_batches` (
 CREATE TABLE `members` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `email` varchar(255) NOT NULL,
-  `info` varchar(255) NOT NULL,
+  `info` longtext NOT NULL,
+  `is_read` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `members`
+--
+
+INSERT INTO `members` (`id`, `email`, `info`, `is_read`, `created_at`, `updated_at`) VALUES
+(1, 'zavurisaq@mailinator.com', 'bookDew is a platform dedicated to providing high-quality e-books for free. Whether you\'re an avid reader, a student, or simply looking to explore new knowledge, bookDew offers a vast collection across various genres. Our mission is to make reading access', 1, '2025-03-18 01:52:31', '2025-03-18 05:09:27'),
+(2, 'figasyxo@mailinator.com', 'Et adipisci reiciend', 1, '2025-03-18 05:09:41', '2025-03-18 05:10:48');
 
 -- --------------------------------------------------------
 
@@ -428,7 +466,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('x2k7K3PSMxqyIOCvwp2PZlySDsfjvpECFDX7sLWk', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZm5TazNzc0llTWlmYU5rTHR2QmYwNWZKdnYycDQxWDN0SkxONWNhYyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6ODI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kb3dubG9hZC1ib29rP2ZpbGU9cGRmJTJGZXQtcXVpLXF1aS1pbi1hdXQtdm8tMTc0MjIwNjM4Ny5qcGciO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjk6InVzZXJFbWFpbCI7czoxNToic2FraWJAZ21haWwuY29tIjt9', 1742278206);
+('6NlXhMLvC4zoIriZw8hXpfY7oPwvZDwjM5bXSz5W', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiWkxDVnpKMUpUNTh2VTlrcEFLM25Ed0RKblNpOWlHYTRSdDJFUm9ONiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6OToidXNlckVtYWlsIjtzOjE1OiJzYWtpYkBnbWFpbC5jb20iO30=', 1742300203);
 
 -- --------------------------------------------------------
 
@@ -509,6 +547,12 @@ ALTER TABLE `categories`
 -- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -623,6 +667,12 @@ ALTER TABLE `contacts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
@@ -644,7 +694,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `menu_footers`

@@ -11,7 +11,7 @@ const page = usePage();
     <div class="container my-4">
 
         <div class="mt-5">
-            <h3>All Books</h3>
+            <h3 v-if="page.props.book.length > 0">All Books</h3>
             <p v-if="page.props.book.length == 0" class="text-center">No Book Found</p>
             <div class="row">
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2" v-for="book in page.props.book" :key="book.id">
@@ -26,8 +26,6 @@ const page = usePage();
                     </div>
                 </div>
             </div>
-
-            <button class="btn btn-primary my-3 d-block mx-auto">See More</button>
         </div>
 
     </div>
@@ -35,9 +33,9 @@ const page = usePage();
 
 <style scoped>
 .related-book-img {
-    width: 80%;
+    width: 100%;
     /* Adjust for smaller related book covers */
     height: 160px;
-    object-fit: cover;
+    object-fit: contain;
 }
 </style>

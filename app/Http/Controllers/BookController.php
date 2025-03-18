@@ -6,7 +6,9 @@ use App\Models\Book;
 use App\Models\BookAuth;
 use App\Models\BookLanguage;
 use App\Models\Category;
+use App\Models\ContactMessage;
 use App\Models\Country;
+use App\Models\Member;
 use App\Models\publication;
 use App\Models\User;
 use Exception;
@@ -24,7 +26,11 @@ class BookController extends Controller
         $list = Book::orderBy('id', 'desc')->get();
         $email = $request->session()->get('userEmail');
         $user = User::where('email', $email)->first();
-        return Inertia::render("Auth/Book/BookList", ['list' => $list, 'user' => $user]);
+
+        $member = Member::where("is_read", 0)->count();
+        $contactMessage = ContactMessage::where("is_read", 0)->count();
+
+        return Inertia::render("Auth/Book/BookList", ['list' => $list, 'user' => $user, 'member' => $member, 'contactMessage' => $contactMessage]);
     }
 
     function AdminBookCreatePage(Request $request)
@@ -37,7 +43,11 @@ class BookController extends Controller
 
         $email = $request->session()->get('userEmail');
         $user = User::where('email', $email)->first();
-        return Inertia::render("Auth/Book/BookCreate", ['countries' => $country, 'categories' => $category, 'languages' => $language, 'authors' => $author, 'publications' => $publication, 'user' => $user]);
+
+        $member = Member::where("is_read", 0)->count();
+        $contactMessage = ContactMessage::where("is_read", 0)->count();
+
+        return Inertia::render("Auth/Book/BookCreate", ['countries' => $country, 'categories' => $category, 'languages' => $language, 'authors' => $author, 'publications' => $publication, 'user' => $user, 'member' => $member, 'contactMessage' => $contactMessage]);
     }
 
     function AdminBookCreate(Request $request)
@@ -142,7 +152,10 @@ class BookController extends Controller
         $email = $request->session()->get('userEmail');
         $user = User::where('email', $email)->first();
 
-        return Inertia::render('Auth/Book/BookEdit', ['list' => $book, 'countries' => $country, 'categories' => $category, 'languages' => $language, 'authors' => $author, 'publications' => $publication, 'user' => $user]);
+        $member = Member::where("is_read", 0)->count();
+        $contactMessage = ContactMessage::where("is_read", 0)->count();
+
+        return Inertia::render('Auth/Book/BookEdit', ['list' => $book, 'countries' => $country, 'categories' => $category, 'languages' => $language, 'authors' => $author, 'publications' => $publication, 'user' => $user, 'member' => $member, 'contactMessage' => $contactMessage]);
     }
 
 

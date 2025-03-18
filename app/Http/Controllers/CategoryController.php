@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Contact;
+use App\Models\ContactMessage;
+use App\Models\Member;
 use App\Models\User;
 use Exception;
 use Inertia\Inertia;
@@ -18,7 +21,11 @@ class CategoryController extends Controller
             $list = Category::orderby('updated_at', 'desc')->with('books')->get();
             $email = $request->session()->get('userEmail');
             $user = User::where('email', $email)->first();
-            return Inertia::render("Auth/Category/CategoryList",['list' => $list,'user'=>$user]);
+
+            $member = Member::where("is_read", 0)->count();
+            $contactMessage = ContactMessage::where("is_read", 0)->count();
+
+            return Inertia::render("Auth/Category/CategoryList",['list' => $list,'user'=>$user,'member'=>$member,'contactMessage'=>$contactMessage]);
 
     }
 

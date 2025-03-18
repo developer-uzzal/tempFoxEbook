@@ -31,9 +31,9 @@ const page = usePage();
 
 <style scoped>
 .related-book-img {
-    width: 80%;
+    width: 100%;
     /* Adjust for smaller related book covers */
     height: 160px;
-    object-fit: cover;
+    object-fit: contain;
 }
 </style>

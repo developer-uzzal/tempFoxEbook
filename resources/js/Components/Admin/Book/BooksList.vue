@@ -58,6 +58,11 @@
                                     alt="">
                             </template>
 
+                            <template #item-is_active="{ is_active }">
+                                <span v-if="is_active" class="badge bg-success">Active</span>
+                                <span v-else class="badge bg-danger">Inactive</span>
+                            </template>
+
                             <template #item-number="{ id, image,file }">
                                 <div class="d-flex align-items-center my-2">
                                     
@@ -129,6 +134,8 @@
 const header = [
     { text: 'Name', value: 'title' },
     { text: 'Images', value: 'image' },
+    { text: 'Download', value: 'download' },
+    { text: 'Status', value: 'is_active' },
     { text: 'Action', value: 'number' },
 ]
 

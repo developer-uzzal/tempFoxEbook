@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactMessage;
+use App\Models\Member;
 use App\Models\Publication;
 use App\Models\User;
 use Exception;
@@ -13,20 +15,17 @@ class BookPublicationController extends Controller
 {
     function AdminBookPublicationsPage(Request $request){
 
-        if($request->input("search")){
-            $search = $request->input('search');
-            $list = Publication::where('name', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(10);
-            $email = $request->session()->get('userEmail');
-            $user = User::where('email', $email)->first();
-            return Inertia::render("Auth/BookPublications/Publication",['list' => $list,'user'=>$user]);
-        }else{
-
+        
             $list = Publication::orderBy('id', 'desc')->paginate(10);
             $email = $request->session()->get('userEmail');
             $user = User::where('email', $email)->first();
-            return Inertia::render("Auth/BookPublications/Publication",['list' => $list,'user'=>$user]);
 
-        }
+            $member = Member::where("is_read", 0)->count();
+            $contactMessage = ContactMessage::where("is_read", 0)->count();
+
+            return Inertia::render("Auth/BookPublications/Publication",['list' => $list,'user'=>$user,'member'=>$member,'contactMessage'=>$contactMessage]);
+
+       
 
     }
 

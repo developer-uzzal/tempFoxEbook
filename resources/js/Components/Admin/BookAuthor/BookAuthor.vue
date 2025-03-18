@@ -161,7 +161,7 @@ const page = usePage();
 
 const searchField = ['name'];
 const searchValue = ref('');
-const item = ref(page.props.list.data);
+const item = ref(page.props.list);
 
 
 

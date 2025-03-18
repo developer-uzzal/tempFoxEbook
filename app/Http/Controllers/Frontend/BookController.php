@@ -57,13 +57,23 @@ class BookController extends Controller
 
 
         $filePath = $request->file;
-
+        
         if (!$filePath || !Storage::disk('public')->exists($filePath)) {
             return response()->json(['error' => 'File not found'], 404);
         }
-
+        
         return response()->streamDownload(function () use ($filePath) {
             echo Storage::disk('public')->get($filePath);
         }, basename($filePath));
+    }
+
+    function downloadIncrement(Request $request)
+    {
+        $name = $request->input('name');
+        $name = "/storage/" . $name;
+
+        $book = Book::where("file", $name)->firstOrFail();
+        $book->download = $book->download + 1;
+        $book->save();
     }
 }

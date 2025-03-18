@@ -12,11 +12,6 @@ use Inertia\Inertia;
 
 class AuthorsController extends Controller
 {
-    function index(){
-        $menuFooter = MenuFooter::first();
-        $languages = BookLanguage::orderBy('name', 'asc')->get();
-        return Inertia::render('Authors/Authors',["menuFooter" => $menuFooter,"languages"=> $languages]);
-    }
 
     function authorBooks($slug){
         $author = BookAuth::where('slug', $slug)->first();

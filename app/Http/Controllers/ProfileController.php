@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactMessage;
+use App\Models\Member;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -17,7 +19,10 @@ class ProfileController extends Controller
         $email = $request->session()->get('userEmail');
         $user = User::where('email', $email)->first();
 
-        return Inertia::render("Auth/Profile/Profile",['user'=>$user]);
+        $member = Member::where("is_read", 0)->count();
+        $contactMessage = ContactMessage::where("is_read", 0)->count();
+
+        return Inertia::render("Auth/Profile/Profile",['user'=>$user,'member'=>$member,'contactMessage'=>$contactMessage]);
     }
 
     public function AdminProfileUpdate(Request $request)

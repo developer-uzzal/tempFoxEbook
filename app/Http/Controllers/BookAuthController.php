@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\BookAuth;
+use App\Models\ContactMessage;
+use App\Models\Member;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -14,10 +16,13 @@ class BookAuthController extends Controller
 {
     function AdminBookAuthPage(Request $request){
 
-            $list = BookAuth::orderBy('id', 'desc')->paginate(10);
+            $list = BookAuth::orderBy('id', 'desc')->get();
             $email = $request->session()->get('userEmail');
             $user = User::where('email', $email)->first();
-            return Inertia::render("Auth/BookAuthor/BookAuthor",['list' => $list,'user'=>$user]);
+
+            $member = Member::where("is_read", 0)->count();
+            $contactMessage = ContactMessage::where("is_read", 0)->count();
+            return Inertia::render("Auth/BookAuthor/BookAuthor",['list' => $list,'user'=>$user,'member'=>$member,'contactMessage'=>$contactMessage]);
 
     }
 

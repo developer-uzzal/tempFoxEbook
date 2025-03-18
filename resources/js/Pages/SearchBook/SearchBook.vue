@@ -4,14 +4,15 @@ defineOptions({
     layout: guestLayout
 })
 
-import AuthorsComponent from '../../Components/Authors/AuthorsComponent.vue';
+import SearchBookComponent from '../../Components/SearchBook/SearchBookComponent.vue';
 
 </script>
 
 <template>
 
     
-    <AuthorsComponent></AuthorsComponent>
+    
+ <SearchBookComponent></SearchBookComponent>
 
 </template>
 

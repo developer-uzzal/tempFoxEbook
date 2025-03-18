@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\BookLanguage;
+use App\Models\ContactMessage;
+use App\Models\Member;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -15,7 +17,11 @@ class BookLanguageController extends Controller
             $list = BookLanguage::orderBy('id', 'desc')->get();
             $email = $request->session()->get('userEmail');
             $user = User::where('email', $email)->first();
-            return Inertia::render("Auth/BookLanguages/Language",['list' => $list, 'user' => $user]);
+
+            $member = Member::where("is_read", 0)->count();
+            $contactMessage = ContactMessage::where("is_read", 0)->count();
+
+            return Inertia::render("Auth/BookLanguages/Language",['list' => $list, 'user' => $user,'member'=> $member,'contactMessage'=> $contactMessage]);
     }
 
     function AdminBookLanguagesCreate(Request $request){

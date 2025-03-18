@@ -17,6 +17,7 @@ use App\Http\Controllers\Frontend\FontCategoryController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\LanguagesController;
 use App\Http\Controllers\Frontend\TrandingController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MenuFooterController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Lang;
@@ -27,13 +28,15 @@ use Inertia\Inertia;
 
 Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/about',[AboutController::class, 'index'])->name('about');
-Route::get('/authors',[AuthorsController::class, 'index'])->name('authors');
 Route::get('/author/{slug}',[AuthorsController::class, 'authorBooks'])->name('authors.books');
 Route::get('/category/{slug}',[FontCategoryController::class, 'index'])->name('category');
-Route::get('/language',[LanguagesController::class, 'index'])->name('languages');
+Route::get('/book/language/{slug}',[LanguagesController::class, 'index'])->name('languages');
 Route::get('/contact',[ContactController::class, 'index'])->name('contact');
+Route::post('/contact/message',[ContactController::class, 'store'])->name('contact.message');
 Route::get('/donate',[DonateController::class, 'index'])->name('donate');
 Route::get('/download-book',[FrontendBookController::class,'bookDownload'])->name('book.download');
+Route::post('/download-success',[FrontendBookController::class,'downloadIncrement'])->name('download.increment');
+Route::post('/premium-members',[MemberController::class,'store'])->name('premium.members');
 
 Route::get('/book/{slug}',[FrontendBookController::class,'SingleBook'])->name('SingleBook');
 
@@ -42,6 +45,7 @@ Route::get('/admin/login', [UserController::class, 'login'])->name('admin.login'
 Route::post('/login', [UserController::class, 'userLogin'])->name('admin.UserLogin');
 Route::get('/logout',[UserController::class,'userLogout']);
 
+Route::get('/search/{search}',[HomeController::class, 'search'])->name('search');
 
 
 
@@ -96,6 +100,11 @@ Route::middleware([AuthenticationMiddleaware ::class])->group(function () {
 
     Route::get('/user-slider',[HomeController::class, 'AdminSliderPage']);
     Route::post('/user-slider-create',[ HomeController::class, 'AdminSliderCreate']);
+
+    Route::get('/new-updates-contact',[ContactController::class, 'AdminNewUpdatesContactPage']);
+    Route::post('/admin/contact-news/update',[ContactController::class, 'AdminNewUpdatesContact']);
+    Route::post('/admin/contact-new/update',[ContactController::class, 'AdminNewUpdatesContactNew']);
+
 
 
 
